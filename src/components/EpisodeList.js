@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import LocCard from "./LocationCard";
+import EpiCard from "./EpisodeCard";
 
 export default function CharacterList() {
   const [data, setData] = useState();
 
   useEffect(() => {
-    axios.get(`https://rickandmortyapi.com/api/location/`).then(res => {
-      //   console.log("location data: ", res.data.results);
+    axios.get(`https://rickandmortyapi.com/api/episode/`).then(res => {
+      // console.log("data: ", res.data.results);
       setData(res.data.results);
     });
   }, []);
@@ -17,7 +17,7 @@ export default function CharacterList() {
   return (
     <section className="character-list grid-view">
       {data.map(info => {
-        return <LocCard key={info.id} data={info} />;
+        return <EpiCard key={info.id} data={info} />;
       })}
     </section>
   );
